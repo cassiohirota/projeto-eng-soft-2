@@ -14,4 +14,4 @@
 * Cássio Hiroshi    RA:
 * Gabriel Barcelos  RA:30482021036
 * Leonardo Gomes    RA:
-* Nicholas Schiming RA:
+* Nicolas Schiming RA: 0030481921023
