@@ -1,5 +1,6 @@
 # Projeto ?????
 
+## Sobre o Projeto
 
 ## Tecnologia
 *
@@ -9,8 +10,8 @@
 *
 
 ## Colaboradores
-* Bárbara Almeida
-* Cássio Hiroshi
-* Gabriel Barcelos
-* Leonardo Gomes
-* Nicholas Schiming
+* Bárbara Almeida   RA:
+* Cássio Hiroshi    RA:
+* Gabriel Barcelos  RA:
+* Leonardo Gomes    RA:
+* Nicholas Schiming RA:
