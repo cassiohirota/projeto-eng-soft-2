@@ -10,8 +10,8 @@
 *
 
 ## Colaboradores
-* Bárbara Almeida   RA: 0030482021024
-* Cássio Hiroshi    RA:
-* Gabriel Barcelos  RA:0030482021036
-* Leonardo Gomes    RA:
-* Nicolas Schiming RA: 0030481921023
+* Bárbara Almeida   RA: 30482021024
+* Cássio Hiroshi    RA: 30482021033
+* Gabriel Barcelos  RA: 30482021036
+* Leonardo Gomes    RA:30482021019
+* Nicolas Schiming RA: 30481921023
