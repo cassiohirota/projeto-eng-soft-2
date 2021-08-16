@@ -3,8 +3,9 @@
 ## Sobre o Projeto
 
 ## Tecnologia
-*
-*
+* C#
+* Oracle (SQL Developer)
+* Oracle (Database)
 *
 *
 *
