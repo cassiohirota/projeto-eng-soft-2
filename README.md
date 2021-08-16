@@ -18,4 +18,3 @@
 * [Gabriel Barcelos](https://github.com/GabrielBarcelos17)  RA: 30482021036
 * [Leonardo Gomes](https://github.com/LeonardoGomes-Teyser)    RA:30482021019
 * [Nicolas Schiming](https://github.com/NickSchiming) RA: 30481921023
-Vida bandida viu!!!!!!!!!!!!!!!!!!!!!
