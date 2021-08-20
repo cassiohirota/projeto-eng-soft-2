@@ -2,7 +2,7 @@
 * Operação Venda, By The ADS Academy
 
 ## Descrição
-[Resumo do Projeto](https://docs.google.com/document/d/1lYzHoXqgSsGnK2DY0EFbA603NNvmuEOSIgz89ve1Q4g/edit?usp=sharing)
+[RESUMO DO PROJETO](https://docs.google.com/document/d/1lYzHoXqgSsGnK2DY0EFbA603NNvmuEOSIgz89ve1Q4g/edit?usp=sharing)
 
 ## Tecnologias
 * C#
