@@ -6,6 +6,8 @@
 
 [DIAGRAMA DE CASO DE USO](https://lucid.app/lucidchart/4a63a198-4f90-46d0-9ec9-326521866ae0/edit?viewport_loc=-590%2C-21%2C2321%2C1039%2C.Q4MUjXso07N&invitationId=inv_2892c58b-f919-4b68-80c7-dfb1d29d940a)
 
+[FIGMA MOCKUP DO SISTEMA](https://www.figma.com/file/5ejYiOfkiIeblSwwC7VgPW/Untitled)
+
 ## Tecnologias
 * C#
 * Oracle (SQL Developer)
