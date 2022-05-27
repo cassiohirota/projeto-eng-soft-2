@@ -1,0 +1,244 @@
+-- Bárbara Aparecida de Almeida Marcolino
+-- Cássio Hiroshi Takashi
+-- Gabriel Barcelos Ramos
+-- Leonardo Mauricio Gomes
+-- Nicolas Schiming
+
+Create table vendedor
+(CodVendedor number(5) not null,
+NomeVendedor varchar2(50) not null,
+Emailvendedor varchar2(50),
+TelefoneVendedor varchar2(13),
+CPFVendedor varchar2(14) not null);
+
+alter table vendedor add constraint PK_Vendedor_CodVendedor primary Key (CodVendedor);
+
+Create table cliente
+(CodCliente number(5) not null,
+NomeCliente varchar2(50) not null,
+EmailCliente varchar2(50),
+TelefoneCliente varchar2(13),
+CPFCliente varchar2(14) not null,
+EnderecoCliente varchar2(50));
+
+alter table cliente add constraint PK_Cliente_CodCliente primary Key (CodCliente);
+
+Create table franquia
+(CodFranquia number(5) not null,
+NomeFranquia varchar2(60) not null,
+EmailFranquia varchar2(50),
+TelefoneFranquia varchar2(13),
+EnderecoFranquia varchar2(50),
+CNPJFranquia varchar2(18) not null);
+
+alter table franquia add constraint PK_Franquia_CodFranquia primary Key (CodFranquia);
+
+Create table revendedor
+(CodRevendedor number(5) not null,
+NomeRevendedor varchar2(50) not null,
+EmailReverndedor varchar2(50),
+TelefoneRevendedor varchar2(13),
+EnderecoRevendedor varchar2(50),
+CPFRevendedor varchar2(14) not null,
+CodFranquia number(5) not null);
+
+alter table revendedor add constraint PK_Revendedor_CodRevendedor primary Key (CodRevendedor);
+alter table revendedor add constraint FK_Revendedor_CodFranquia foreign Key (CodFranquia) references franquia;
+
+Create table produto
+(CodProduto number(5) not null,
+NomeProduto varchar2(50) not null,
+Descricao varchar2(50),
+Tipo varchar2(15),
+Preco number(5, 2),
+Unidade char(2),
+QtdeLote number(4));
+
+alter table produto add constraint PK_Produto_CodProduto primary Key (CodProduto);
+
+create table pedido
+(CodPedido number(5) not null,
+ValorPedido number(5,2) not null,
+CodRevendedor number(5),
+CodVendedor number(5),
+DataPedido date);
+
+alter table pedido add (CodCliente number (5));
+alter table pedido add constraint FK_Pedido_CodCliente foreign Key (CodCliente) references cliente;
+
+alter table pedido add constraint PK_Pedido_CodPedidoo primary Key (CodPedido);
+alter table pedido add constraint FK_Pedido_CodRevendedor foreign Key (CodRevendedor) references revendedor;
+alter table pedido add constraint FK_Pedido_CodVendedor foreign Key (CodVendedor) references vendedor;
+
+Create table item
+(CodProduto number(5) not null,
+CodPedido number(5) not null,
+qtdeItem number(4));
+
+alter table item add constraint FK_Item_CodPedido foreign Key (CodPedido) references pedido;
+alter table item add constraint FK_Item_CodProduto foreign Key (CodProduto) references produto;
+
+
+-- Vendedor 
+
+insert into vendedor values (2828, 'Louis William Tomlinson', 'LouisWTomlinson@gmail.com', '15 28282-8282', '282.828.282-82');
+insert into vendedor values (6928, 'Harry Edward Styles', 'HarryEdwardStyles@gmail.com', '15 69696-9696', '696.969.969-69');
+insert into vendedor values (0028, 'Liam James Payne', 'LiamJPayne@gmail.com', '15 07070-7070', '070.707.707-07');
+insert into vendedor values (2228, 'Niall James Horan', 'NiallJamesHoran@gmail.com', '15 22222-2222', '222.222.222-22');
+insert into vendedor values (1228, 'Zayn Javaad Malik', 'ZaynJMalik@gmail.com', '15 12341-2341', '123.412.412-34');
+insert into vendedor values (6228, 'Joey Tribbiani', 'JoeyTribbiani@gmail.com', '15 12567-7641', '468.612.412-34');
+
+-- Cliente
+
+insert into cliente values (1269, 'Chandler Bing', 'ChandlerBing@gmail.com', '15 12345-1234', '123.456.789-10', 'Rua Bedford Street, 90, Sorocaba-SP');
+insert into cliente values (1369, 'Monica Geller', 'MonicaGeller@gmail.com', '15 67891-0111', '111.213.141-51', 'Rua Bedford Street, 91, Sorocaba-SP');
+insert into cliente values (1469, 'Ross Geller', 'RossGeller@gmail.com', '15 12131-4151', '617.181.920-21', 'Rua Ugly Naked Guy, 102, Sorocaba-SP');
+insert into cliente values (1569, 'Rachel Green', 'RachelGreen@gmail.com', '15 61718-1920', '222.324.252-62', 'Rua Ugly Naked Guy, 103, Sorocaba-SP');
+insert into cliente values (1669, 'Phoebe Buffay', 'PhoebeBuffay@gmail.com', '15 21222-3242', '728.293.031-32', 'Rua Walls, 28, Sorocaba-SP');
+
+-- Fanquia
+
+insert into franquia values (2021, 'The ADS Academy', 'TheADSAcadamy@gmail.com', '15 20212-0212', 'Rua Umbrella, 21, Sorocaba-SP', '20.202.120/2120-21');
+
+-- Revendedor
+
+insert into revendedor values (1229, 'Five Hargreeves', 'FiveHargreeves@gmail.com', '15 55555-5555', 'Rua The Umbrella, 5, Sorocaba-SP','555.555.555-55', 2021);
+insert into revendedor values (1329, 'Vanya Hargree', 'VanyaHargree@gmail.com', '15 77777-7777', 'Rua Marvel , 7, Sorocaba-SP','777.777.777-77', 2021);
+insert into revendedor values (1429, 'Diego Hargves', 'DiegoHargrves@gmail.com', '15 22222-2222', 'Rua American Horror Story, 2, Sorocaba-SP','222.222.222-22', 2021);
+insert into revendedor values (1529, 'Alisson Hargreeves', 'AlissonHargreeves@gmail.com', '15 33333-3333', 'Rua Once Upon a Time, 3, Sorocaba-SP','333.333.333-33', 2021);
+insert into revendedor values (1629, 'Klaus Harges', 'KlausHarges@gmail.com', '15 44444-4444', 'Rua The Doctor, 1, Sorocaba-SP','444.444.444-44', 2021);
+
+-- Produto
+
+insert into produto values (2344, 'Walls', 'Perfume', 'Masculino', 26.00, 'ml', 5); 
+insert into produto values (2444, 'Woman', 'Perfume', 'Feminino', 28.00, 'ml', 6); 
+insert into produto values (2544, 'Ghost', 'Perfume', 'Neutro', 26.00, 'ml', 7); 
+insert into produto values (2644, 'Princess Park', 'Perfume', 'Feminino', 30.00, 'ml', 8); 
+insert into produto values (2744, 'Falling', 'Perfume', 'Masculino', 22.00, 'ml', 3); 
+insert into produto values (2844, 'Red Hot', 'Perfume', 'Feminino', 25.00, 'ml', 7);
+
+
+-- Pedido
+
+insert into pedido values (3233, 34.00, 1329, 2828, '13/dec/2021', 1269); 
+insert into pedido values (3333, 44.00, 1229, 6928, '23/dec/2021', 1369); 
+insert into pedido values (3433, 54.00, 1429, 0028, '11/dec/2021', 1469); 
+insert into pedido values (3533, 24.00, 1529, 2228, '4/dec/2021', 1569); 
+insert into pedido values (3633, 74.00, 1629, 1228, '22/dec/2021', 1669); 
+
+-- Item
+
+insert into item values (2344, 3233, 30);
+insert into item values (2444, 3333, 20);
+insert into item values (2544, 3433, 15);
+insert into item values (2644, 3533, 10);
+insert into item values (2744, 3633, 5);
+
+--a.    Acrescente uma coluna nova “data de inclusão” no formato date, na primeira tabela criada.  
+alter table vendedor add (datadeinclusao date);
+--R: O comando irá estar acrescentando uma nova coluna que prende mostrar sua Data de Inclusão de seu Vendedor
+
+-- b.    Altere o valor desta coluna colocando a data do sistema.
+Update vendedor
+set datadeinclusao = sysdate;
+-- R: Esse comando irá alterar o valor inicial da coluna, colocando a data do sistema.
+
+-- c.    Altere o tamanho de qualquer campo da tabela principal de seu sistema e acrescente a restrição de não permitir valores nulos.
+alter table vendedor modify emailvendedor varchar2(55) not null;
+--R: O Comando irá modificar o tamanho de qualquer campo email da tabela vendedor
+
+-- d.    Excluir a coluna acrescentada na questão a.
+alter table vendedor drop column datadeinclusao;
+--R: Esse comando ira deletar a DatadeInclusao da tabela vendedor.
+
+-- e.    Escreva um comando Select utilizando a cláusula LIKE.
+select * from cliente where CPFCliente LIKE '123%';
+--R: O comando está listando os clientes que tem CPF com início "123"
+
+-- f.    Escreva um comando Select que utilize a cláusula where com 2 condições, e order by.
+select * from cliente
+where enderecoCliente ='Rua Bedford Street, 91, Sorocaba-SP' and CPFCliente ='111.213.141-51'
+order by nomeCliente;
+--R:Este comando mostrará os clientes que tem o endereço igual a "Rua Bedford Street, 91, Sorocaba-SP" 
+--e com o cpf igual a "111.213.141-51", ordenado pelo nome do cliente
+
+-- g.    Escreva um comando Select utilizando a cláusula distinct
+select distinct enderecoFranquia from franquia;
+--R:Esse comando mostra os diferentes endereços que tem na tabela franquia
+
+-- h.    Escreva um comando que utilize uma função de soma de datas dentro da cláusula where.
+select * from pedido where datapedido < add_months (sysdate, 6);
+--R:Esse comando está somando as datas de alguns pedidos, comparando com a data do sistema
+
+-- i.    Escreva um comando select para listar a data do sistema mostrando dia, mês, ano, hora, minuto e segundo.
+select to_char (sysdate, 'mm-dd-yyyy hh24:mi:ss') "Agora" from DUAL
+--R:Esse comando irá mostrar a data do sistema em um formado dia-mes-ano hora-minutos-segundos
+
+-- j.    Escreva uma consulta usando junção de mais de 2 tabelas
+select item.codProduto, produto.Descricao, item.qtdeItem, pedido.DataPedido
+from pedido
+inner join Item on Pedido.CodPedido = item.CodPedido
+inner join Produto on item.CodProduto = produto.CodProduto
+where Pedido.CodPedido = 3233;
+--R: Esse comando estará mostrando produtos do pedido 3233 com a quantidade do item, a descricao do produto e a data em que o pedido foi feito.
+
+-- k.    Escreva uma consulta que seja útil para a lógica de negócios usando junção e uma ou mais funções de totalização. 
+select vendedor.codVendedor, avg (valorpedido) as MediaVendas, count(*)
+from pedido
+inner join vendedor on vendedor.codVendedor = pedido.codVendedor
+where pedido.datapedido > '01/jan/2021'
+group by vendedor.codVendedor;
+--R:Esse comando irá mostrar a media de valor das vendas e quantas vendas os vendedores vieram a fazer.
+
+-- l.    Escreva uma consulta usando junção externa left join ou right join 
+select pedido.codVendedor, pedido.valorpedido, pedido.CodPedido, item.codproduto
+from pedido right join item
+on pedido.codPedido = item.codPedido;
+--R:Esse comando irá mostrar os produtos de cada pedido, junto ao vendedor, o valor e o codigo do pedido
+
+-- m.    Escreva uma consulta usando o operador de União. 
+select codProduto from Produto
+where UPPER (tipo) = 'Masculino'
+Union
+select codProduto from item
+where qtdeItem >= 20;
+--R: Esse comando mostra os produtos com o tipo 'masculino' e que tenha quantidade maior ou igual a 20 no item dos pedidos
+
+-- n.    Escreva uma consulta usando o operador Minus 
+select codvendedor from vendedor 
+minus
+select codvendedor from pedido;
+--R:Esse comando está mostrando os vendedores que não tiveram nenhum pedido
+
+-- o.    Escreva uma consulta usando o operador de intersecção 
+select codRevendedor from revendedor
+where codfranquia = 2021
+intersect
+select codRevendedor from pedido;
+--R: Esse comando mostra os vendedores da franquia 2021 que têm pedidos feitos.
+ 
+-- p.    Escreva uma View usando Group by e Having
+create view visao6
+as select codVendedor, count(*) as conta
+from pedido
+group by codVendedor, valorPedido
+having (valorPedido >= 25.00);
+--R: Esse comando irá criar a visão que mostratará o codigo dos vendedores e quantos pedidos eles têm
+-- Contanto que o valor do pedido tenha sido maior ou igual a 25.00
+
+-- 3. Subconsultas (sobre o tema escolhido) (1,5) 
+
+--a.Exemplo de um comando utilizando subconsultas que utilize o operador = ou <,>, <= etc. 
+select codProduto from item
+where qtdeItem > (select avg (qtdeItem) from item);
+--R:Esse comando irá mostrar os produtos dos itens de pedido que tenham uma quantidade maior do que a média de quantidade dos outros pedidos
+
+--b.Exemplo de um comando utilizando subconsultas que utilize o operador in. 
+select codRevendedor from Revendedor
+where codRevendedor in (select codRevendedor from pedido);
+--R:Este comando mostrará os revendedores que não tem pedido feitos
+
+--C.Um comando utilizando subconsultas que utilize o operador not in. 
+Select codProduto from Produto
+where codProduto not in (select codProduto from item);
+--R:Esse comando irá mostrar os produtos que não aparecem em nenhum pedido.
