@@ -11,14 +11,14 @@ CREATE TABLE franquia(
 CNPJ number(14) not null,
 RazaoSocial varchar(30) not null,
 Endereco varchar2(100) not null,
-Codusuario number(10) not null
+Codusuario number(10)
 );
 
 CREATE TABLE loja(
 CNPJ number(14) not null,
 RazaoSocial varchar(30) not null,
 Endereco varchar2(100) not null,
-Codusuario number(10) not null
+Codusuario number(10)
 ----FK Loja-Franquia ????
 
 );
@@ -26,21 +26,21 @@ Codusuario number(10) not null
 CREATE TABLE supervisor(
 CPF number(11) not null,
 Nome varchar(50) not null,
-Codusuario number(10) not null
+Codusuario number(10)
 );
 
 CREATE TABLE Revendedor(
 CPF number(11) not null,
 Nome varchar(50) not null,
 Endereco varchar2(100) not null,
-DataNascimento date not null,
-Codusuario number(10) not null
+DataNascimento date,
+Codusuario number(10)
 );
 
 CREATE TABLE Metas(
-Nivel number(11) not null,
-Valor number(5,2) not null,
-Recompensa varchar2(50) not null
+Nivel number(2),
+Valor number(5,2),
+Recompensa varchar2(50)
 );
 
 CREATE TABLE Pedido(
@@ -48,29 +48,29 @@ Codpedido number(8) not null,
 Status varchar2(20) not null,
 DataPedido date not null,
 ValPedido number(5,2) not null,
-NF number(9) not null
+NF number(9)
 );
 
 CREATE TABLE ItemPedido(
-QtdeProd number(4) not null,
-Codpedido number(8) not null,
-Codproduto number(8) not null
+QtdeProd number(4),
+Codpedido number(8),
+Codproduto number(8) 
 );
 
 CREATE TABLE Produto(
 Codproduto number(8) not null,
 NomeProduto varchar2(20) not null,
-Descricao varchar2(50) not null,
+Descricao varchar2(50),
 QtdeEstoque number(4) not null,
 ValorUnitario number(4,2) not null
 );
 
 CREATE TABLE ItensNF(
-QtdeProd number(4) not null,
-PrecoUnit number(4,2) not null,
-QtdeFaturada number(4) not null,
-NF number(9) not null,
-Codproduto number(8) not null
+QtdeProd number(4),
+PrecoUnit number(4,2),
+QtdeFaturada number(4),
+NF number(9),
+Codproduto number(8)
 );
 
 CREATE TABLE NotaFiscal(
@@ -81,10 +81,10 @@ Razaosocial varchar(30) not null,
 InscricaoEstadual number(9) not null,
 DataEmissao date not null,
 ValorTotal number(5,2) not null,
-Codpedido number(8) not null
+Codpedido number(8)
 );
 
---DEFININDO AS RESTRIÇÕES de PK
+--DEFININDO AS RESTRIÃ‡Ã•ES de PK
 
 ALTER TABLE Usuario
  ADD CONSTRAINT PK_Usuario_codusuario PRIMARY KEY(Codusuario);
@@ -99,7 +99,7 @@ ALTER TABLE Pedido
 ALTER TABLE NotaFiscal
  ADD CONSTRAINT PK_NotaFiscal_NF PRIMARY KEY(NF);
  
---DEFININDO AS RESTRIÇÕES de FK
+--DEFININDO AS RESTRIÃ‡Ã•ES de FK
 
 ALTER TABLE Franquia
  ADD CONSTRAINT FK_Franquia_codusario FOREIGN KEY(Codusuario) REFERENCES Usuario;
@@ -128,4 +128,4 @@ ALTER TABLE ItensNF
 ALTER TABLE NotaFiscal
  ADD CONSTRAINT FK_NotaFiscal_Codproduto FOREIGN KEY(Codpedido) REFERENCES Pedido;
  
- --Anotações: FK Loja e Franquia?
+ --AnotaÃ§Ãµes: FK Loja e Franquia?
